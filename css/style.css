@@ -175,8 +175,8 @@ ol, ul { list-style: none; }
   font-size: .62em; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; color: var(--gold);
 }
 .ec-names { position: relative; font-family: var(--script); line-height: 1; color: var(--ink); margin-top: .9em; }
-.ec-names span { display: block; font-size: 2.7em; line-height: 1.1; }
-.ec-names em { display: block; font-size: 1.3em; font-style: normal; color: var(--rose); }
+.ec-names span { display: block; font-size: 2.6em; line-height: 1.3; }
+.ec-names em { display: block; font-size: 1.3em; line-height: 1.25; font-style: normal; color: var(--rose); }
 .ec-art {
   position: relative; margin: .5em -1em 0;
   aspect-ratio: 16 / 9; overflow: hidden;
@@ -252,6 +252,7 @@ ol, ul { list-style: none; }
   filter: drop-shadow(0 5px 6px rgba(110, 72, 45, .3)) drop-shadow(0 1px 1px rgba(110, 72, 45, .3));
   transition: transform .18s ease;
   -webkit-tap-highlight-color: transparent;
+  container-type: inline-size;
 }
 .seal::after {
   content: ''; position: absolute; inset: -9px; border-radius: 50%;
@@ -268,13 +269,18 @@ ol, ul { list-style: none; }
 .seal-mono {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--script); font-size: calc(var(--ew, 340px) * .095); line-height: 1;
-  padding: 6% 0 0 2%; letter-spacing: -.02em; white-space: nowrap;
+  /* Sized from the seal's own width so it can never outgrow it: the A&T ink
+     spans ~3.57em, so 18.5cqw keeps it within ~66% of the seal (inner ring
+     is 68%). Roffelia's T swash overhangs to the right, putting the ink
+     centre .445em right of the text box centre — shift back by that much. */
+  font-family: var(--script); font-size: 18.5cqw; line-height: 1;
+  letter-spacing: -.02em; white-space: nowrap;
+  transform: translate(-.445em, .02em);
   background: linear-gradient(135deg, #9b6f35 0%, #e5c88a 30%, #b48848 50%, #f1dca6 68%, #94672f 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   filter: drop-shadow(0 1px 0 rgba(255, 250, 238, .8)) drop-shadow(0 -1px 0 rgba(120, 82, 40, .25));
 }
-.seal-mono em { font-style: normal; font-size: .7em; margin: 0 1px; }
+.seal-mono em { font-style: normal; font-size: .7em; }
 
 /* ----- the opening, step by step (classes added by main.js) ----- */
 .envelope.is-pressed .seal { transform: translate(-50%, -50%) scale(.92); }
@@ -435,16 +441,16 @@ ol, ul { list-style: none; }
   font-family: var(--script);
   font-weight: 400;
   font-size: clamp(54px, 16vw, 70px);
-  line-height: 1.12;
+  line-height: 1.3;
   color: var(--ink);
 }
 .weds {
   display: block;
   font-family: var(--script);
   font-size: clamp(30px, 9vw, 40px);
-  line-height: 1;
+  line-height: 1.25;
   color: var(--rose);
-  margin: -4px 0 -2px;
+  margin: 0;
 }
 .cover-date {
   margin-top: 12px;
@@ -595,16 +601,16 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
 .arch-card .arch-card-top { margin-bottom: -88px; }
 .arch-card .mini-flourish { width: 150px; margin: 0 auto 16px; }
 
-.parents { font-size: 23px; font-weight: 600; letter-spacing: .02em; color: var(--ink); }
+.parents { text-wrap: balance; font-size: 23px; font-weight: 600; letter-spacing: .02em; color: var(--ink); }
 .request { text-wrap: balance; margin-top: 10px; font-size: 18px; font-style: italic; line-height: 1.6; color: var(--ink-soft); }
 .big-name {
   font-family: var(--script);
-  font-size: 56px; line-height: 1.1; font-weight: 400; color: var(--ink);
-  margin-top: 26px;
+  font-size: 56px; line-height: 1.3; font-weight: 400; color: var(--ink);
+  margin-top: 20px;
 }
-.weds-script { font-family: var(--script); font-size: 34px; line-height: 1; color: var(--rose); margin-top: 0; }
+.weds-script { font-family: var(--script); font-size: 34px; line-height: 1.25; color: var(--rose); margin-top: 0; }
 .weds-script + .big-name { margin-top: 0; }
-.son-of { margin-top: 12px; font-size: 18px; color: var(--ink-soft); }
+.son-of { margin-top: 12px; font-size: 22px; font-weight: 500; line-height: 1.35; color: var(--ink); text-wrap: balance; }
 .son-of span { display: block; font-size: 13px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 2px; }
 .arch-card-flora { width: 210px; margin: 22px auto -6px; }
 .arch-card-flora svg { width: 100%; height: auto; overflow: visible; }
@@ -760,7 +766,7 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
    RSVP
    ========================================================================== */
 .rsvp { padding-top: 96px; }
-.rsvp .script-title { position: relative; z-index: 3; font-size: clamp(30px, 8.8vw, 36px); line-height: 1.25; max-width: 340px; margin: 0 auto; }
+.rsvp .script-title { position: relative; z-index: 3; font-size: clamp(30px, 8.8vw, 36px); max-width: 340px; margin-left: auto; margin-right: auto; }
 .rsvp-label {
   margin: 14px auto 0;
   display: flex; align-items: center; justify-content: center; gap: 14px;
@@ -783,7 +789,7 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
    BLESSINGS
    ========================================================================== */
 .blessings { padding-top: 20px; }
-.blessings .script-title { font-size: 36px; line-height: 1.25; }
+.blessings .script-title { font-size: 36px; }
 .bless-list { margin-top: 20px; }
 .bless-list li { font-size: 23px; font-weight: 500; line-height: 1.85; color: var(--ink); }
 .bless-list .bless-family { font-style: italic; color: var(--rose-deep); margin-top: 4px; }
@@ -822,9 +828,9 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
 }
 .thanks .lead { margin-top: 10px; }
 .with-love { margin-top: 30px; font-family: var(--script); font-size: 34px; color: var(--rose); }
-.signature { margin-top: 12px; font-family: var(--script); font-size: 50px; font-weight: 400; line-height: 1.2; color: var(--ink); }
+.signature { margin-top: 12px; font-family: var(--script); font-size: clamp(42px, 12.5vw, 50px); font-weight: 400; line-height: 1.2; color: var(--ink); }
 .end-seal { position: relative; width: 84px; height: 84px; margin: 30px auto 0; filter: drop-shadow(0 5px 7px rgba(110, 72, 45, .25)); }
-.end-seal .seal-mono { font-size: 27px; }
+.end-seal { container-type: inline-size; }
 .end-date { margin-top: 12px; font-family: var(--times); font-size: 17px; letter-spacing: .2em; text-indent: .2em; color: var(--gold); }
 
 /* ==========================================================================
@@ -856,6 +862,28 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
 @keyframes eq { 0%, 100% { transform: scaleY(.3); } 50% { transform: scaleY(1); } }
 .music.is-playing .music-note { display: none; }
 .music.is-playing .music-bars { display: flex; }
+
+/* ==========================================================================
+   ROFFELIA LINE SPACING
+   Roffelia's swashes reach ~1.1em above the baseline and ~0.4em below it,
+   so wrapped lines need a line-height of at least ~1.5 or they touch.
+   One shared value for every multi-line calligraphic element; titles pull
+   their outer edges back in slightly so single-line titles keep their
+   previous footprint and no extra gaps open up around them.
+   ========================================================================== */
+:root { --script-lh: 1.55; }
+.script-title,
+.thanks-title,
+.env-names,
+.signature,
+.with-love,
+.place h4,
+.timeline .followed,
+.scroll-cue {
+  line-height: var(--script-lh);
+}
+.script-title,
+.thanks-title { margin-top: -.18em; margin-bottom: -.12em; }
 
 /* ==========================================================================
    LARGER SCREENS — present the invitation as a card on a warm table
