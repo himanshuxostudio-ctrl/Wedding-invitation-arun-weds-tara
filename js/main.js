@@ -142,24 +142,43 @@
    * 3. Envelope opening
    * ---------------------------------------------------------------- */
   var envelope = document.getElementById('envelope');
-  var env = document.getElementById('env');
+  var card = envelope.querySelector('.env-card');
   var opened = false;
 
+  // Seal reacts → cracks & falls → flap lifts → card rises → card becomes the page.
   function openEnvelope() {
     if (opened) return;
     opened = true;
     playMusic(); // inside the user gesture, so browsers allow it
 
-    var t = reduceMotion ? 0.25 : 1;
-    env.classList.add('is-opening');
-    envelope.classList.add('is-opening');
-    setTimeout(function () { body.classList.add('is-revealed'); }, 1500 * t);
-    setTimeout(function () { envelope.classList.add('is-fading'); }, 2150 * t);
-    setTimeout(function () {
+    // ?slow=4 stretches the sequence for reviewing it frame by frame
+    var slow = parseFloat((location.search.match(/[?&]slow=([\d.]+)/) || [])[1]) || 1;
+    var k = (reduceMotion ? 0.3 : 1) * slow;
+    function at(ms, fn) { setTimeout(fn, ms * k); }
+
+    envelope.classList.add('is-pressed');
+    at(190, function () { envelope.classList.add('is-released'); });
+    at(650, function () { envelope.classList.add('is-lifting'); });
+    at(1900, function () { envelope.classList.add('is-rising'); });
+    at(3500, function () {
+      // Grow the card from wherever it sits into the full invitation column.
+      var r = card.getBoundingClientRect();
+      var colW = Math.min(window.innerWidth, 480);
+      var scale = colW / r.width;
+      var dx = window.innerWidth / 2 - (r.left + r.width / 2);
+      var dy = -r.top;
+      var base = getComputedStyle(card).transform;
+      card.style.transition = 'transform 1.4s cubic-bezier(.6,0,.2,1)';
+      card.style.transform = 'translate(' + dx + 'px,' + dy + 'px) ' + (base === 'none' ? '' : base) + ' scale(' + scale + ')';
+      envelope.classList.add('is-expanding');
+    });
+    at(4500, function () { envelope.classList.add('is-fading'); });
+    at(4600, function () { body.classList.add('is-revealed'); });
+    at(5500, function () {
       envelope.classList.add('is-gone');
       body.classList.remove('is-sealed');
       musicBtn.classList.add('is-visible');
-    }, 3100 * t);
+    });
   }
 
   document.getElementById('seal').addEventListener('click', openEnvelope);
@@ -170,16 +189,27 @@
    * ---------------------------------------------------------------- */
   var revealEls = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window && !reduceMotion) {
+    // A fully clipped element has no visible area, so "unfold" panels are
+    // watched through their parent instead.
+    var watched = [];
+    function revealTarget(el) { return el.getAttribute('data-reveal') === 'unfold' ? el.parentNode : el; }
     var io = new IntersectionObserver(function (entries) {
       var n = 0;
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
-        en.target.style.setProperty('--d', (n++ * 110) + 'ms');
-        en.target.classList.add('in');
+        watched.forEach(function (pair) {
+          if (pair[1] !== en.target || pair[0].classList.contains('in')) return;
+          pair[0].style.setProperty('--d', (n++ * 110) + 'ms');
+          pair[0].classList.add('in');
+        });
         io.unobserve(en.target);
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-    Array.prototype.forEach.call(revealEls, function (el) { io.observe(el); });
+    Array.prototype.forEach.call(revealEls, function (el) {
+      var t = revealTarget(el);
+      watched.push([el, t]);
+      io.observe(t);
+    });
   } else {
     Array.prototype.forEach.call(revealEls, function (el) { el.classList.add('in'); });
   }
@@ -207,7 +237,32 @@
   parallax();
 
   /* ------------------------------------------------------------------
-   * 6. Scratch-to-reveal date
+   * 6. Countdown — to the Swagat Barat, 7:00 PM IST on 21 November 2026
+   * ---------------------------------------------------------------- */
+  var WEDDING = Date.UTC(2026, 10, 21, 13, 30, 0); // 19:00 IST = 13:30 UTC
+  var cdEls = {};
+  Array.prototype.forEach.call(document.querySelectorAll('[data-cd]'), function (el) {
+    cdEls[el.getAttribute('data-cd')] = el;
+  });
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+  function tick() {
+    var left = Math.max(0, Math.floor((WEDDING - Date.now()) / 1000));
+    var vals = {
+      d: Math.floor(left / 86400),
+      h: Math.floor(left % 86400 / 3600),
+      m: Math.floor(left % 3600 / 60),
+      s: left % 60
+    };
+    for (var key in vals) {
+      var txt = pad(vals[key]);
+      if (cdEls[key] && cdEls[key].textContent !== txt) cdEls[key].textContent = txt;
+    }
+    if (left > 0) setTimeout(tick, 1000 - Date.now() % 1000);
+  }
+  tick();
+
+  /* ------------------------------------------------------------------
+   * 7. Scratch-to-reveal date
    * ---------------------------------------------------------------- */
   var cards = document.querySelectorAll('.scratch-card');
   var revealedCount = 0;

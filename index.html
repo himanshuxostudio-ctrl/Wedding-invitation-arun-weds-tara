@@ -11,8 +11,8 @@
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/img/proposal.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Tiro+Devanagari+Sanskrit&family=Tinos:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/couple.webp">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="is-sealed">
@@ -21,36 +21,40 @@
 
   <!-- ============ THE ENVELOPE ============ -->
   <div class="envelope" id="envelope">
-    <div class="env" id="env">
-      <div class="env-inside"></div>
+    <div class="env-light" aria-hidden="true"></div>
+    <div class="env-scene" id="envScene">
+      <p class="env-names">Tara <em>&amp;</em> Arun</p>
 
-      <div class="flap flap-left"><div class="flap-face"><div class="emboss emboss-side" data-flora="emboss-side"></div></div></div>
-      <div class="flap flap-right"><div class="flap-face"><div class="emboss emboss-side" data-flora="emboss-side"></div></div></div>
-      <div class="flap flap-bottom">
-        <div class="flap-face">
-          <div class="emboss emboss-bottom" data-flora="emboss-bottom"></div>
+      <div class="env" id="env">
+        <div class="env-back"></div>
+        <div class="env-glow" aria-hidden="true"></div>
+
+        <!-- the invitation card waiting inside the pocket -->
+        <div class="env-card" aria-hidden="true">
+          <div class="ec-inner">
+            <div class="ec-arch" data-flora="arch"></div>
+            <p class="ec-eyebrow">The Wedding Celebration of</p>
+            <p class="ec-names"><span>Tara</span><em>weds</em><span>Arun</span></p>
+            <div class="ec-art"><img src="assets/img/couple.webp" alt="" width="1600" height="900"></div>
+            <p class="ec-date">21 · November · 2026</p>
+          </div>
         </div>
-      </div>
-      <div class="flap flap-top">
-        <div class="flap-face flap-front">
-          <div class="emboss emboss-top" data-flora="emboss-top"></div>
+
+        <div class="flap flap-left"><div class="flap-face"><div class="emboss emboss-side" data-flora="emboss-side"></div></div></div>
+        <div class="flap flap-right"><div class="flap-face"><div class="emboss emboss-side" data-flora="emboss-side"></div></div></div>
+        <div class="flap flap-bottom"><div class="flap-face"><div class="emboss emboss-bottom" data-flora="emboss-bottom"></div></div></div>
+        <div class="flap flap-top">
+          <div class="flap-face flap-front"><div class="emboss emboss-top" data-flora="emboss-top"></div><div class="flap-shade"></div></div>
+          <div class="flap-face flap-back"></div>
         </div>
-        <div class="flap-face flap-back"></div>
+
+        <button class="seal" id="seal" type="button" aria-label="Break the seal and open the invitation">
+          <span class="seal-half seal-l"><span class="seal-wax" data-flora="seal"></span><span class="seal-mono" aria-hidden="true">A<em>&amp;</em>T</span></span>
+          <span class="seal-half seal-r"><span class="seal-wax" data-flora="seal"></span><span class="seal-mono" aria-hidden="true">A<em>&amp;</em>T</span></span>
+        </button>
       </div>
 
-      <div class="env-sheen" aria-hidden="true"></div>
-      <div class="env-bloom" aria-hidden="true"></div>
-
-      <button class="seal" id="seal" type="button" aria-label="Open the invitation">
-        <span class="seal-wax" data-flora="seal"></span>
-        <span class="seal-mono" aria-hidden="true">A<em>&amp;</em>T</span>
-      </button>
-
-      <div class="env-cta">
-        <p class="env-names">Tara <em>&amp;</em> Arun</p>
-        <button class="open-btn" id="openBtn" type="button">Open Invitation</button>
-        <p class="env-hint">tap the seal to open</p>
-      </div>
+      <button class="env-hint" id="openBtn" type="button">Tap the seal to open</button>
     </div>
   </div>
 
@@ -70,11 +74,12 @@
             <span class="weds intro" style="--i:2">weds</span>
             <span class="name intro" style="--i:3">Arun</span>
           </h1>
-          <p class="cover-date intro" style="--i:4"><span>21</span><i></i><span>November</span><i></i><span>2026</span></p>
+          <p class="cover-date intro" style="--i:4">Saturday, 21<sup>st</sup> November 2026</p>
         </div>
-        <figure class="cover-art intro" style="--i:2">
-          <img src="assets/img/proposal.webp" alt="Illustration of Arun on one knee offering Tara a white rose beneath a wall of white flowers and candles" width="1332" height="2000" data-parallax="0.06">
+        <figure class="cover-art intro" style="--i:3">
+          <img src="assets/img/couple.webp" alt="Watercolour illustration of Arun in a wine sherwani smiling at Tara in blush pink" width="1600" height="900" data-parallax="0.04">
         </figure>
+        <div class="cover-spray intro" style="--i:5" data-flora="spray" data-seed="13"></div>
       </div>
       <a class="scroll-cue intro" style="--i:6" href="#date">
         <span>Scroll down</span>
@@ -101,7 +106,21 @@
           <span class="scratch-label">Year</span>
         </div>
       </div>
-      <p class="date-after" id="dateAfter">Saturday · Save the Date</p>
+      <p class="date-after" id="dateAfter">Saturday, 21<sup>st</sup> November 2026</p>
+
+      <div class="countdown" data-reveal aria-label="Countdown to the wedding">
+        <div class="flourish-wrap" data-flora="flourish"></div>
+        <h3 class="script-title script-title--sm">Counting Down</h3>
+        <div class="cd-row" id="countdown" role="timer" aria-live="off">
+          <div class="cd-unit"><span class="cd-num" data-cd="d">00</span><span class="cd-label">Days</span></div>
+          <i class="cd-sep" aria-hidden="true"></i>
+          <div class="cd-unit"><span class="cd-num" data-cd="h">00</span><span class="cd-label">Hours</span></div>
+          <i class="cd-sep" aria-hidden="true"></i>
+          <div class="cd-unit"><span class="cd-num" data-cd="m">00</span><span class="cd-label">Minutes</span></div>
+          <i class="cd-sep" aria-hidden="true"></i>
+          <div class="cd-unit"><span class="cd-num" data-cd="s">00</span><span class="cd-label">Seconds</span></div>
+        </div>
+      </div>
     </section>
 
     <!-- Invocation -->
@@ -132,6 +151,11 @@
     <section class="page welcome" id="welcome">
       <h2 class="script-title" data-reveal>Dear Friends &amp; Family</h2>
       <p class="lead" data-reveal>With hearts full of happiness, we invite you to celebrate the beginning of a beautiful new chapter as Arun &amp; Tara begin their journey together.</p>
+      <figure class="moment moment--welcome" data-reveal="image">
+        <div class="corner corner-tr" data-flora="corner" data-seed="37"></div>
+        <div class="corner corner-bl" data-flora="corner" data-seed="43"></div>
+        <div class="moment-img"><img src="assets/img/proposal.webp" alt="Illustration of Arun on one knee offering Tara a white rose beneath a wall of white flowers and candles" width="1332" height="2000" decoding="async" data-parallax="0.04"></div>
+      </figure>
     </section>
 
     <!-- Family invitation -->
@@ -145,7 +169,7 @@
           <p class="big-name" data-reveal>Tara</p>
           <p class="weds-script" data-reveal>weds</p>
           <p class="big-name" data-reveal>Arun</p>
-          <p class="son-of" data-reveal><span>Son of</span>Mrs. Sushma &amp; Late Sh. Prithvi Singh</p>
+          <p class="son-of" data-reveal><span>Son of</span>Mrs. Sushma &amp; Late Prithvi Singh</p>
           <div class="arch-card-flora" data-flora="spray" data-seed="31"></div>
         </div>
       </div>
@@ -182,7 +206,7 @@
       <h2 class="script-title" data-reveal>The Celebrations</h2>
 
       <div class="day" data-reveal>
-        <p class="day-head"><span class="day-num">20</span><span class="day-meta"><span>November 2026</span><em>Friday</em></span></p>
+        <p class="day-head">Friday, 20<sup>th</sup> November 2026</p>
         <ol class="timeline">
           <li data-reveal><span class="tl-icon" data-flora="icon:haldi"></span><div><h3>Haldi</h3><p class="time">11:00 AM</p></div></li>
           <li data-reveal><span class="tl-icon" data-flora="icon:sangeet"></span><div><h3>Mehndi &amp; Sangeet</h3><p class="time">7:00 PM onwards</p></div></li>
@@ -198,11 +222,11 @@
       <div class="day-divider" data-flora="flourish"></div>
 
       <div class="day" data-reveal>
-        <p class="day-head"><span class="day-num">21</span><span class="day-meta"><span>November 2026</span><em>Saturday</em></span></p>
+        <p class="day-head">Saturday, 21<sup>st</sup> November 2026</p>
         <ol class="timeline">
           <li data-reveal><span class="tl-icon" data-flora="icon:barat"></span><div><h3>Swagat Barat</h3><p class="time">7:00 PM</p></div></li>
           <li data-reveal><span class="tl-icon" data-flora="icon:dinner"></span><div><h3>Dinner</h3><p class="time">8:00 PM</p></div></li>
-          <li data-reveal><span class="tl-icon" data-flora="icon:doli"></span><div><h3>Doli</h3><p class="time">Under the Stars</p></div></li>
+          <li data-reveal><span class="tl-icon" data-flora="icon:doli"></span><div><h3>Doli</h3><p class="time time--text">Under the Stars</p></div></li>
           <li data-reveal class="tl-last"><span class="tl-icon" data-flora="icon:phere"></span><div><p class="followed">Followed by</p><h3>Dance · Music · Phere</h3></div></li>
         </ol>
       </div>
@@ -215,7 +239,7 @@
         <div class="venue-art-wrap" data-flora="venue"></div>
         <p class="venue-name">The Grand Nimantran</p>
         <p class="venue-addr">NH 7, Near Guru Nanak Service Station<br>Dhakoli, Zirakpur, Punjab – 160104</p>
-        <p class="venue-date"><span>Saturday</span>21 November 2026</p>
+        <p class="venue-date">Saturday, 21<sup>st</sup> November 2026</p>
         <a class="gold-btn" href="https://www.google.com/maps/search/?api=1&amp;query=The+Grand+Nimantran+NH+7+Dhakoli+Zirakpur+Punjab+160104" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-6.2-6.5-11.2A6.5 6.5 0 0 1 18.5 9.8C18.5 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
           View Location
@@ -232,7 +256,7 @@
       <div class="contacts">
         <div class="contact" data-reveal>
           <p class="contact-name">Anku Verma</p>
-          <a class="contact-num" href="tel:+919588568534">95885 68534</a>
+          <a class="contact-num" href="tel:+919588568534">9588568534</a>
           <a class="gold-btn gold-btn--solid" href="tel:+919588568534">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.8l1.4 4.3-2 1.6a12 12 0 0 0 5.8 5.8l1.6-2 4.3 1.4v2.8a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
             Call Anku
@@ -240,8 +264,8 @@
         </div>
         <div class="contact" data-reveal>
           <p class="contact-name">Barkha</p>
-          <a class="contact-num" href="tel:+918837791382">88377 91382</a>
-          <a class="contact-num" href="tel:+919034114316">90341 14316</a>
+          <a class="contact-num" href="tel:+918837791382">8837791382</a>
+          <a class="contact-num" href="tel:+919034114316">9034114316</a>
           <a class="gold-btn gold-btn--solid" href="tel:+918837791382">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.8l1.4 4.3-2 1.6a12 12 0 0 0 5.8 5.8l1.6-2 4.3 1.4v2.8a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
             Call Barkha
@@ -266,7 +290,7 @@
       <div class="little-stars" data-reveal>
         <svg class="stars-ornament" viewBox="0 0 120 30" aria-hidden="true"><g fill="currentColor"><path d="M60 3l2.4 7.6L70 13l-7.6 2.4L60 23l-2.4-7.6L50 13l7.6-2.4z"/><path d="M38 10l1.3 3.7 3.7 1.3-3.7 1.3L38 20l-1.3-3.7L33 15l3.7-1.3z" opacity=".7"/><path d="M82 10l1.3 3.7 3.7 1.3-3.7 1.3L82 20l-1.3-3.7L77 15l3.7-1.3z" opacity=".7"/><circle cx="22" cy="15" r="1.4" opacity=".5"/><circle cx="98" cy="15" r="1.4" opacity=".5"/></g></svg>
         <h3 class="script-title script-title--sm">Little Stars</h3>
-        <p class="stars-names">Mahi <i>·</i> Devansh <i>·</i> Duggu <i>·</i> Vani</p>
+        <p class="stars-names">Mahi, Devansh, Duggu &amp; Vani</p>
       </div>
     </section>
 

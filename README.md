@@ -15,6 +15,7 @@ js/flora.js           SVG generator for the embossed / watercolour florals, arch
 js/main.js            envelope opening, music, scroll reveals, parallax, scratch cards
 assets/img/           the three couple illustrations
 assets/audio/         background soundtrack (starts when the invitation is opened)
+assets/fonts/         (add the licensed 'Sephora & Hayden' calligraphy font here)
 ```
 
 No build step — it's plain static HTML/CSS/JS.
@@ -29,3 +30,15 @@ python3 -m http.server 8000
 ## Publish with GitHub Pages
 
 Settings → Pages → Deploy from a branch → choose the branch and `/ (root)`.
+
+## Calligraphy font
+
+Headings and names use **Sephora & Hayden**, a licensed font that can't be bundled here.
+Copy the font file to `assets/fonts/` (e.g. `SephoraHayden.woff2`) and uncomment the matching
+`url()` line in the `@font-face` rule at the top of `css/style.css`. Until then the page falls
+back to Pinyon Script. Dates, days, timings and phone numbers use Times New Roman
+(Tinos — its metric twin — on Android).
+
+## Reviewing the envelope animation
+
+Append `?slow=4` to the URL to play the opening sequence four times slower.

@@ -27,8 +27,8 @@
   // blush / ivory / sage watercolour look used on the invitation pages.
   var PALETTES = {
     emboss: {
-      petal: '#f4e6dc', petalIn: '#f1e1d6', line: '#d9bfae', lineSoft: '#e4cfc1',
-      leaf: '#f2e3d8', leafLine: '#d6bba9', stem: '#dcc3b2', dot: '#ead6c8'
+      petal: '#f5ede3', petalIn: '#f1e7db', line: '#d5c1ab', lineSoft: '#e2d4c4',
+      leaf: '#f3eadf', leafLine: '#d2bea8', stem: '#d9c7b3', dot: '#e8dccd'
     },
     color: {
       petal: '#fffaf5', petalIn: '#f6e3dc', line: '#c9a79a', lineSoft: '#dcc0b4',
