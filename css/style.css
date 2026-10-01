@@ -21,7 +21,7 @@
   --ink-soft: #6c584b;
 
   --serif: 'Cormorant Garamond', 'Cormorant', Garamond, 'Times New Roman', serif;
-  --script: 'Sephora & Hayden', 'Sephora Hayden', 'SephoraHayden', 'Pinyon Script', cursive;
+  --script: 'Roffelia', cursive;
   --times: 'Times New Roman', Times, Tinos, 'Liberation Serif', serif;
   --deva: 'Tiro Devanagari Sanskrit', 'Tiro Devanagari Hindi', 'Noto Serif Devanagari', serif;
 
@@ -30,17 +30,12 @@
   --ease-soft: cubic-bezier(.45, .05, .25, 1);
 }
 
-/* Calligraphy — 'Sephora & Hayden' (a licensed font, not on Google Fonts).
-   To activate it for every visitor, put the font file in assets/fonts/ and
-   uncomment the matching url() line below. Until then the page uses the
-   font only where it is installed locally, and otherwise falls back to
-   Pinyon Script. */
+/* Calligraphy — Roffelia, served from the project (assets/fonts). */
 @font-face {
-  font-family: 'Sephora & Hayden';
-  src: local('Sephora & Hayden'), local('Sephora Hayden'), local('SephoraHayden-Regular'), local('SephoraHayden')
-       /* , url('../assets/fonts/SephoraHayden.woff2') format('woff2') */
-       /* , url('../assets/fonts/SephoraHayden.otf') format('opentype') */
-       /* , url('../assets/fonts/SephoraHayden.ttf') format('truetype') */;
+  font-family: 'Roffelia';
+  src: url('../assets/fonts/Roffelia.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -114,7 +109,7 @@ ol, ul { list-style: none; }
   color: var(--rose-deep);
   transition: opacity .6s ease, transform .9s var(--ease);
 }
-.env-names em { font-family: var(--serif); font-style: italic; font-size: .62em; margin: 0 4px; color: var(--gold); }
+.env-names em { font-style: normal; font-size: .8em; margin: 0 4px; color: var(--gold); }
 
 .env-hint {
   border: 0; background: none; cursor: pointer;
@@ -179,9 +174,9 @@ ol, ul { list-style: none; }
   position: relative; padding-top: 4.4em;
   font-size: .62em; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; color: var(--gold);
 }
-.ec-names { position: relative; font-family: var(--script); line-height: 1; color: var(--ink); margin-top: .3em; }
-.ec-names span { display: block; font-size: 3.1em; line-height: 1.05; }
-.ec-names em { display: block; font-size: 1.5em; font-style: normal; color: var(--rose); }
+.ec-names { position: relative; font-family: var(--script); line-height: 1; color: var(--ink); margin-top: .9em; }
+.ec-names span { display: block; font-size: 2.7em; line-height: 1.1; }
+.ec-names em { display: block; font-size: 1.3em; font-style: normal; color: var(--rose); }
 .ec-art {
   position: relative; margin: .5em -1em 0;
   aspect-ratio: 16 / 9; overflow: hidden;
@@ -279,7 +274,7 @@ ol, ul { list-style: none; }
   -webkit-background-clip: text; background-clip: text; color: transparent;
   filter: drop-shadow(0 1px 0 rgba(255, 250, 238, .8)) drop-shadow(0 -1px 0 rgba(120, 82, 40, .25));
 }
-.seal-mono em { font-family: var(--serif); font-style: italic; font-size: .62em; margin: 0 3px 0 1px; vertical-align: 3px; }
+.seal-mono em { font-style: normal; font-size: .7em; margin: 0 1px; }
 
 /* ----- the opening, step by step (classes added by main.js) ----- */
 .envelope.is-pressed .seal { transform: translate(-50%, -50%) scale(.92); }
@@ -350,18 +345,13 @@ ol, ul { list-style: none; }
 .script-title {
   font-family: var(--script);
   font-weight: 400;
-  font-size: 46px;
+  font-size: 42px;
   line-height: 1.15;
   color: var(--rose-deep);
   letter-spacing: .01em;
 }
 .script-title--sm { font-size: 40px; }
 
-.kicker {
-  margin-top: 6px;
-  font-size: 15px; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--gold);
-}
 
 .lead { font-size: 21px; line-height: 1.6; color: var(--ink-soft); text-wrap: balance; max-width: 360px; margin-left: auto; margin-right: auto; }
 
@@ -438,13 +428,13 @@ ol, ul { list-style: none; }
   font-size: 13px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold);
   font-weight: 600;
 }
-.names { font-weight: 400; margin-top: 6px; }
+.names { font-weight: 400; margin-top: 16px; }
 .name {
   display: block;
   font-family: var(--script);
   font-weight: 400;
-  font-size: clamp(60px, 18vw, 80px);
-  line-height: 1.08;
+  font-size: clamp(54px, 16vw, 70px);
+  line-height: 1.12;
   color: var(--ink);
 }
 .weds {
@@ -534,54 +524,18 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
   color: var(--gold);
 }
 .cd-sep { width: 4px; height: 4px; margin-top: 24px; background: var(--gold-soft); transform: rotate(45deg); flex: none; }
-.scratch-row {
-  display: flex; justify-content: center; gap: 12px;
-  margin-top: 26px;
+/* the date, printed — no reveal mechanics */
+.date-print { margin-top: 22px; font-family: var(--times); color: var(--ink); }
+.dp-day { font-size: 15px; letter-spacing: .34em; text-indent: .34em; text-transform: uppercase; color: var(--gold); }
+.dp-row { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 8px; }
+.dp-side {
+  min-width: 96px; padding: 7px 0;
+  border-top: 1px solid rgba(205, 174, 120, .65);
+  border-bottom: 1px solid rgba(205, 174, 120, .65);
+  font-size: 17px; letter-spacing: .2em; text-indent: .2em; text-transform: uppercase;
 }
-.scratch { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.scratch-card {
-  position: relative;
-  width: clamp(92px, 27vw, 112px); height: clamp(100px, 29vw, 120px);
-  border-radius: 3px;
-  background: linear-gradient(160deg, #fffdf9, #f5ebe0);
-  box-shadow: 0 8px 18px rgba(120, 85, 60, .12), inset 0 0 0 1px rgba(205, 174, 120, .45), inset 0 0 0 5px #fffaf3, inset 0 0 0 6px rgba(205, 174, 120, .3);
-  display: grid; place-items: center;
-  overflow: hidden;
-}
-.scratch-val {
-  font-family: var(--times);
-  font-size: 38px; font-weight: 400; color: var(--ink);
-}
-.scratch-val--month { font-size: 19px; letter-spacing: .02em; }
-.scratch-card canvas {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  touch-action: none; cursor: grab;
-  border-radius: 3px;
-  transition: opacity .8s ease, transform .8s var(--ease);
-}
-.scratch-card::after {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,.55) 50%, transparent 65%);
-  background-size: 260% 100%;
-  animation: foil 3.2s ease-in-out infinite;
-}
-.scratch:nth-child(2) .scratch-card::after { animation-delay: .35s; }
-.scratch:nth-child(3) .scratch-card::after { animation-delay: .7s; }
-@keyframes foil { 0% { background-position: 130% 0; } 60%, 100% { background-position: -30% 0; } }
-.scratch-card.touched::after, .scratch-card.revealed::after { animation: none; opacity: 0; }
-.scratch-card.revealed canvas { opacity: 0; transform: scale(1.06); pointer-events: none; }
-.scratch-card.revealed .scratch-val { animation: glow 1.6s ease; }
-@keyframes glow { 0% { text-shadow: 0 0 0 rgba(231, 211, 167, 0); } 40% { text-shadow: 0 0 18px rgba(214, 178, 110, .9); } 100% { text-shadow: 0 0 0 rgba(231, 211, 167, 0); } }
-
-.scratch-label { font-size: 12px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
-
-.date-after {
-  margin-top: 22px;
-  font-family: var(--times); font-size: 20px; color: var(--ink-soft);
-  opacity: 0; transform: translateY(10px);
-  transition: opacity 1.2s var(--ease) .3s, transform 1.2s var(--ease) .3s;
-}
-.date-after.in { opacity: 1; transform: none; }
+.dp-num { font-size: 64px; line-height: 1; color: var(--ink); }
+.dp-num sup { font-size: .3em; vertical-align: 1.9em; margin-left: 2px; color: var(--gold); }
 
 /* ==========================================================================
    INVOCATION
@@ -644,8 +598,8 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
 .request { text-wrap: balance; margin-top: 10px; font-size: 18px; font-style: italic; line-height: 1.6; color: var(--ink-soft); }
 .big-name {
   font-family: var(--script);
-  font-size: 62px; line-height: 1.05; font-weight: 400; color: var(--ink);
-  margin-top: 16px;
+  font-size: 56px; line-height: 1.1; font-weight: 400; color: var(--ink);
+  margin-top: 26px;
 }
 .weds-script { font-family: var(--script); font-size: 34px; line-height: 1; color: var(--rose); margin-top: 0; }
 .weds-script + .big-name { margin-top: 0; }
@@ -805,7 +759,7 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
    RSVP
    ========================================================================== */
 .rsvp { padding-top: 96px; }
-.rsvp .script-title { position: relative; z-index: 3; font-size: 42px; }
+.rsvp .script-title { position: relative; z-index: 3; font-size: 34px; line-height: 1.25; }
 .rsvp-label {
   margin: 14px auto 0;
   display: flex; align-items: center; justify-content: center; gap: 14px;
@@ -828,7 +782,7 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
    BLESSINGS
    ========================================================================== */
 .blessings { padding-top: 20px; }
-.blessings .script-title { font-size: 40px; }
+.blessings .script-title { font-size: 36px; line-height: 1.25; }
 .bless-list { margin-top: 20px; }
 .bless-list li { font-size: 23px; font-weight: 500; line-height: 1.85; color: var(--ink); }
 .bless-list .bless-family { font-style: italic; color: var(--rose-deep); margin-top: 4px; }
@@ -863,11 +817,11 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
 
 .thanks-title {
   font-family: var(--script); font-weight: 400;
-  font-size: clamp(60px, 18vw, 76px); line-height: 1.1; color: var(--rose-deep);
+  font-size: clamp(54px, 16vw, 68px); line-height: 1.15; color: var(--rose-deep);
 }
 .thanks .lead { margin-top: 10px; }
 .with-love { margin-top: 30px; font-family: var(--script); font-size: 34px; color: var(--rose); }
-.signature { font-family: var(--script); font-size: 56px; font-weight: 400; line-height: 1.15; color: var(--ink); }
+.signature { margin-top: 12px; font-family: var(--script); font-size: 50px; font-weight: 400; line-height: 1.2; color: var(--ink); }
 .end-seal { position: relative; width: 84px; height: 84px; margin: 30px auto 0; filter: drop-shadow(0 5px 7px rgba(110, 72, 45, .25)); }
 .end-seal .seal-mono { font-size: 27px; }
 .end-date { margin-top: 12px; font-family: var(--times); font-size: 17px; letter-spacing: .2em; text-indent: .2em; color: var(--gold); }
@@ -929,7 +883,7 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
 
 @media (max-height: 720px) {
   .cover-frame { padding-top: 58px; }
-  .name { font-size: clamp(50px, 15vw, 62px); }
+  .name { font-size: clamp(46px, 14vw, 56px); }
   .weds { font-size: 28px; }
   .cover-date { margin-top: 6px; font-size: 17px; }
   .cover-art { margin-top: 10px; }
