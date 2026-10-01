@@ -351,6 +351,7 @@ ol, ul { list-style: none; }
   letter-spacing: .01em;
 }
 .script-title--sm { font-size: 40px; }
+.script-title, .stars-names, .timeline h3, .lead { text-wrap: balance; }
 
 
 .lead { font-size: 21px; line-height: 1.6; color: var(--ink-soft); text-wrap: balance; max-width: 360px; margin-left: auto; margin-right: auto; }
@@ -759,7 +760,7 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
    RSVP
    ========================================================================== */
 .rsvp { padding-top: 96px; }
-.rsvp .script-title { position: relative; z-index: 3; font-size: 34px; line-height: 1.25; }
+.rsvp .script-title { position: relative; z-index: 3; font-size: clamp(30px, 8.8vw, 36px); line-height: 1.25; max-width: 340px; margin: 0 auto; }
 .rsvp-label {
   margin: 14px auto 0;
   display: flex; align-items: center; justify-content: center; gap: 14px;
@@ -887,4 +888,11 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
   .weds { font-size: 28px; }
   .cover-date { margin-top: 6px; font-size: 17px; }
   .cover-art { margin-top: 10px; }
+}
+
+@media (max-width: 374px) {
+  .eyebrow { font-size: 11px; letter-spacing: .22em; }
+  .dp-row { gap: 10px; }
+  .dp-side { min-width: 82px; font-size: 15px; letter-spacing: .14em; text-indent: .14em; }
+  .dp-num { font-size: 56px; }
 }
