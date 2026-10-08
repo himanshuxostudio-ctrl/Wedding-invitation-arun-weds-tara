@@ -12,6 +12,7 @@ Experience flow: embossed envelope with an A&T wax seal → envelope opens with 
 index.html            all invitation content
 css/style.css         styling, envelope + opening animation, reveals
 js/flora.js           SVG generator for the embossed / watercolour florals, arches, icons
+js/i18n.js            English ↔ Hindi: all translations + the EN | हिंदी switch
 js/main.js            envelope opening, music, scroll reveals, parallax, countdown
 assets/img/           the three couple illustrations
 assets/audio/         background soundtrack (starts when the invitation is opened)
@@ -42,3 +43,12 @@ Settings → Pages → Deploy from a branch → choose the branch and `/ (root)`
 ## Reviewing the envelope animation
 
 Append `?slow=4` to the URL to play the opening sequence four times slower.
+
+## English ↔ Hindi
+
+All copy for both languages lives in `js/i18n.js` (`translations.en` / `translations.hi`).
+In the HTML, translatable elements carry `data-i18n="key"` (content) or
+`data-i18n-attr="aria-label:key"` (attributes). The guest's choice is saved in
+`localStorage` under `tara-arun-language`; English is the default. Hindi-only type
+adjustments are at the end of `css/style.css`, all scoped to `html[lang="hi"]`.
+To edit a line, change it in `js/i18n.js` — keep the English value identical to the HTML.

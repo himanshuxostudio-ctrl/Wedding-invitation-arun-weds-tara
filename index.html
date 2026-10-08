@@ -15,6 +15,7 @@
   <link rel="preload" as="font" type="font/otf" href="assets/fonts/Roffelia.otf" crossorigin>
   <link rel="preload" as="image" href="assets/img/couple.webp">
   <link rel="stylesheet" href="css/style.css">
+  <script>try{if(localStorage.getItem('tara-arun-language')==='hi')document.documentElement.lang='hi'}catch(e){}</script>
 </head>
 <body class="is-sealed">
 
@@ -24,7 +25,7 @@
   <div class="envelope" id="envelope">
     <div class="env-light" aria-hidden="true"></div>
     <div class="env-scene" id="envScene">
-      <p class="env-names">Tara <em>&amp;</em> Arun</p>
+      <p class="env-names" data-i18n="envNames">Tara <em>&amp;</em> Arun</p>
 
       <div class="env" id="env">
         <div class="env-back"></div>
@@ -34,10 +35,10 @@
         <div class="env-card" aria-hidden="true">
           <div class="ec-inner">
             <div class="ec-arch" data-flora="arch"></div>
-            <p class="ec-eyebrow">The Wedding Celebration of</p>
-            <p class="ec-names"><span>Tara</span><em>weds</em><span>Arun</span></p>
+            <p class="ec-eyebrow" data-i18n="celebrationOf">The Wedding Celebration of</p>
+            <p class="ec-names" data-i18n="cardNames"><span>Tara</span><em>weds</em><span>Arun</span></p>
             <div class="ec-art"><img src="assets/img/couple.webp" alt="" width="1600" height="900"></div>
-            <p class="ec-date">21 · November · 2026</p>
+            <p class="ec-date" data-i18n="cardDate">21 · November · 2026</p>
           </div>
         </div>
 
@@ -49,13 +50,13 @@
           <div class="flap-face flap-back"></div>
         </div>
 
-        <button class="seal" id="seal" type="button" aria-label="Break the seal and open the invitation">
+        <button class="seal" id="seal" type="button" aria-label="Break the seal and open the invitation" data-i18n-attr="aria-label:sealAria">
           <span class="seal-half seal-l"><span class="seal-wax" data-flora="seal"></span><span class="seal-mono" aria-hidden="true">A<em>&amp;</em>T</span></span>
           <span class="seal-half seal-r"><span class="seal-wax" data-flora="seal"></span><span class="seal-mono" aria-hidden="true">A<em>&amp;</em>T</span></span>
         </button>
       </div>
 
-      <button class="env-hint" id="openBtn" type="button">Tap the seal to open</button>
+      <button class="env-hint" id="openBtn" type="button" data-i18n="openHint">Tap the seal to open</button>
     </div>
   </div>
 
@@ -69,21 +70,21 @@
       <div class="cover-frame">
         <div class="arch-frame"><div class="arch-svg" data-flora="arch"></div></div>
         <div class="cover-text">
-          <p class="eyebrow intro" style="--i:0">The Wedding Celebration of</p>
+          <p class="eyebrow intro" style="--i:0" data-i18n="celebrationOf">The Wedding Celebration of</p>
           <h1 class="names">
-            <span class="name intro" style="--i:1">Tara</span>
-            <span class="weds intro" style="--i:2">weds</span>
-            <span class="name intro" style="--i:3">Arun</span>
+            <span class="name intro" style="--i:1" data-i18n="bride">Tara</span>
+            <span class="weds intro" style="--i:2" data-i18n="weds">weds</span>
+            <span class="name intro" style="--i:3" data-i18n="groom">Arun</span>
           </h1>
-          <p class="cover-date intro" style="--i:4">Saturday, 21<sup>st</sup> November 2026</p>
+          <p class="cover-date intro" style="--i:4" data-i18n="weddingDateLong">Saturday, 21<sup>st</sup> November 2026</p>
         </div>
         <figure class="cover-art intro" style="--i:3">
-          <img src="assets/img/couple.webp" alt="Watercolour illustration of Arun in a wine sherwani smiling at Tara in blush pink" width="1600" height="900" data-parallax="0.04">
+          <img src="assets/img/couple.webp" alt="Watercolour illustration of Arun in a wine sherwani smiling at Tara in blush pink" data-i18n-attr="alt:coverArtAlt" width="1600" height="900" data-parallax="0.04">
         </figure>
         <div class="cover-spray intro" style="--i:5" data-flora="spray" data-seed="13"></div>
       </div>
       <a class="scroll-cue intro" style="--i:6" href="#date">
-        <span>Scroll down</span>
+        <span data-i18n="scrollDown">Scroll down</span>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </section>
@@ -91,27 +92,27 @@
     <!-- The Date -->
     <section class="page date" id="date">
       <div class="spray" data-flora="spray" data-seed="5"></div>
-      <h2 class="script-title" data-reveal>The Date</h2>
-      <div class="date-print" data-reveal aria-label="Saturday, 21st November 2026">
-        <p class="dp-day">Saturday</p>
+      <h2 class="script-title" data-reveal data-i18n="theDate">The Date</h2>
+      <div class="date-print" data-reveal aria-label="Saturday, 21st November 2026" data-i18n-attr="aria-label:dateAria">
+        <p class="dp-day" data-i18n="saturday">Saturday</p>
         <div class="dp-row">
-          <span class="dp-side">November</span>
-          <span class="dp-num">21<sup>st</sup></span>
+          <span class="dp-side" data-i18n="november">November</span>
+          <span class="dp-num" data-i18n="dateNum">21<sup>st</sup></span>
           <span class="dp-side">2026</span>
         </div>
       </div>
 
-      <div class="countdown" data-reveal aria-label="Countdown to the wedding">
+      <div class="countdown" data-reveal aria-label="Countdown to the wedding" data-i18n-attr="aria-label:countdownAria">
         <div class="flourish-wrap" data-flora="flourish"></div>
-        <h3 class="script-title script-title--sm">Counting Down</h3>
+        <h3 class="script-title script-title--sm" data-i18n="countingDown">Counting Down</h3>
         <div class="cd-row" id="countdown" role="timer" aria-live="off">
-          <div class="cd-unit"><span class="cd-num" data-cd="d">00</span><span class="cd-label">Days</span></div>
+          <div class="cd-unit"><span class="cd-num" data-cd="d">00</span><span class="cd-label" data-i18n="days">Days</span></div>
           <i class="cd-sep" aria-hidden="true"></i>
-          <div class="cd-unit"><span class="cd-num" data-cd="h">00</span><span class="cd-label">Hours</span></div>
+          <div class="cd-unit"><span class="cd-num" data-cd="h">00</span><span class="cd-label" data-i18n="hours">Hours</span></div>
           <i class="cd-sep" aria-hidden="true"></i>
-          <div class="cd-unit"><span class="cd-num" data-cd="m">00</span><span class="cd-label">Minutes</span></div>
+          <div class="cd-unit"><span class="cd-num" data-cd="m">00</span><span class="cd-label" data-i18n="minutes">Minutes</span></div>
           <i class="cd-sep" aria-hidden="true"></i>
-          <div class="cd-unit"><span class="cd-num" data-cd="s">00</span><span class="cd-label">Seconds</span></div>
+          <div class="cd-unit"><span class="cd-num" data-cd="s">00</span><span class="cd-label" data-i18n="seconds">Seconds</span></div>
         </div>
       </div>
     </section>
@@ -142,12 +143,12 @@
 
     <!-- Dear friends -->
     <section class="page welcome" id="welcome">
-      <h2 class="script-title" data-reveal>Dear Friends &amp; Family</h2>
-      <p class="lead" data-reveal>With hearts full of happiness, we invite you to celebrate the beginning of a beautiful new chapter as Arun &amp; Tara begin their journey together.</p>
+      <h2 class="script-title" data-reveal data-i18n="dearFamily">Dear Friends &amp; Family</h2>
+      <p class="lead" data-reveal data-i18n="welcomeText">With hearts full of happiness, we invite you to celebrate the beginning of a beautiful new chapter as Arun &amp; Tara begin their journey together.</p>
       <figure class="moment moment--welcome" data-reveal="image">
         <div class="corner corner-tr" data-flora="corner" data-seed="37"></div>
         <div class="corner corner-bl" data-flora="corner" data-seed="43"></div>
-        <div class="moment-img"><img src="assets/img/proposal.webp" alt="Illustration of Arun on one knee offering Tara a white rose beneath a wall of white flowers and candles" width="1332" height="2000" decoding="async" data-parallax="0.04"></div>
+        <div class="moment-img"><img src="assets/img/proposal.webp" alt="Illustration of Arun on one knee offering Tara a white rose beneath a wall of white flowers and candles" data-i18n-attr="alt:proposalAlt" width="1332" height="2000" decoding="async" data-parallax="0.04"></div>
       </figure>
     </section>
 
@@ -157,12 +158,12 @@
         <div class="arch-card-top" data-flora="arch"></div>
         <div class="arch-card-body">
           <div class="mini-flourish" data-flora="flourish"></div>
-          <p class="parents" data-reveal>Mrs. Sunita &amp; Mr. Ravi Singh</p>
-          <p class="request" data-reveal>request the pleasure of your gracious presence at the auspicious occasion of the wedding ceremony of their daughter</p>
-          <p class="big-name" data-reveal>Tara</p>
-          <p class="weds-script" data-reveal>weds</p>
-          <p class="big-name" data-reveal>Arun</p>
-          <p class="son-of" data-reveal><span>Son of</span>Mrs. Sushma &amp; Late Shree Prithvi Singh</p>
+          <p class="parents" data-reveal data-i18n="brideParents">Mrs. Sunita &amp; Mr. Ravi Singh</p>
+          <p class="request" data-reveal data-i18n="request">request the pleasure of your gracious presence at the auspicious occasion of the wedding ceremony of their daughter</p>
+          <p class="big-name" data-reveal data-i18n="bride">Tara</p>
+          <p class="weds-script" data-reveal data-i18n="weds">weds</p>
+          <p class="big-name" data-reveal data-i18n="groom">Arun</p>
+          <p class="son-of" data-reveal data-i18n="groomParents"><span>Son of</span>Mrs. Sushma &amp; Late Shree Prithvi Singh</p>
           <div class="arch-card-flora" data-flora="spray" data-seed="31"></div>
         </div>
       </div>
@@ -173,69 +174,69 @@
       <figure class="moment" data-reveal="image">
         <div class="corner corner-tl" data-flora="corner" data-seed="41"></div>
         <div class="corner corner-br" data-flora="corner" data-seed="47"></div>
-        <div class="moment-img"><img src="assets/img/promise.webp" alt="Illustration of Arun tenderly kissing Tara's hand" width="1332" height="2000" loading="eager" decoding="async" data-parallax="0.04"></div>
+        <div class="moment-img"><img src="assets/img/promise.webp" alt="Illustration of Arun tenderly kissing Tara's hand" data-i18n-attr="alt:promiseAlt" width="1332" height="2000" loading="eager" decoding="async" data-parallax="0.04"></div>
       </figure>
 
-      <h2 class="script-title" data-reveal>The Seven Sacred Steps</h2>
+      <h2 class="script-title" data-reveal data-i18n="sevenSteps">The Seven Sacred Steps</h2>
       <div class="flourish-wrap" data-reveal data-flora="flourish"></div>
       <ol class="steps">
-        <li data-reveal><span class="num">01</span><p>To provide for our household, keeping it pure and avoiding those things that might harm us.</p></li>
-        <li data-reveal><span class="num">02</span><p>To develop our physical, mental &amp; spiritual power.</p></li>
-        <li data-reveal><span class="num">03</span><p>To increase our wealth by righteous &amp; proper means.</p></li>
-        <li data-reveal><span class="num">04</span><p>To acquire knowledge, wealth, happiness &amp; harmony by mutual love, respect &amp; trust.</p></li>
-        <li data-reveal><span class="num">05</span><p>To be blessed with strong, virtuous &amp; heroic children.</p></li>
-        <li data-reveal><span class="num">06</span><p>To strive for self-restraint &amp; longevity.</p></li>
-        <li data-reveal><span class="num">07</span><p>To be true companions &amp; remain lifelong partners by this wedlock.</p></li>
+        <li data-reveal><span class="num">01</span><p data-i18n="step1">To provide for our household, keeping it pure and avoiding those things that might harm us.</p></li>
+        <li data-reveal><span class="num">02</span><p data-i18n="step2">To develop our physical, mental &amp; spiritual power.</p></li>
+        <li data-reveal><span class="num">03</span><p data-i18n="step3">To increase our wealth by righteous &amp; proper means.</p></li>
+        <li data-reveal><span class="num">04</span><p data-i18n="step4">To acquire knowledge, wealth, happiness &amp; harmony by mutual love, respect &amp; trust.</p></li>
+        <li data-reveal><span class="num">05</span><p data-i18n="step5">To be blessed with strong, virtuous &amp; heroic children.</p></li>
+        <li data-reveal><span class="num">06</span><p data-i18n="step6">To strive for self-restraint &amp; longevity.</p></li>
+        <li data-reveal><span class="num">07</span><p data-i18n="step7">To be true companions &amp; remain lifelong partners by this wedlock.</p></li>
       </ol>
       <p class="fire-line" data-reveal>
         <svg class="flame" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M24 6 C30 14 34 19 32 27 C31 32 27 35 24 35 C21 35 17 32 16 27 C14 19 18 14 24 6Z"/><path d="M24 20 C27 24 27 28 24 31 C21 28 21 24 24 20Z"/><path d="M10 41 C16 37 32 37 38 41"/></g></svg>
-        In the presence of the holy fire,<br>they take their first steps into<br>a new life of togetherness.
+        <span data-i18n="holyFire">In the presence of the holy fire,<br>they take their first steps into<br>a new life of togetherness.</span>
       </p>
     </section>
 
     <!-- Celebrations -->
     <section class="page celebrations" id="celebrations">
       <div class="spray" data-flora="spray" data-seed="57"></div>
-      <h2 class="script-title" data-reveal>The Celebrations</h2>
+      <h2 class="script-title" data-reveal data-i18n="celebrations">The Celebrations</h2>
 
       <div class="day" data-reveal>
-        <p class="day-head">Friday, 20<sup>th</sup> November 2026</p>
+        <p class="day-head" data-i18n="day1">Friday, 20<sup>th</sup> November 2026</p>
         <ol class="timeline">
-          <li data-reveal><span class="tl-icon" data-flora="icon:haldi"></span><div><h3>Haldi</h3><p class="time">11:00 AM</p></div></li>
-          <li data-reveal><span class="tl-icon" data-flora="icon:sangeet"></span><div><h3>Mehndi &amp; Sangeet</h3><p class="time">7:00 PM onwards</p></div></li>
+          <li data-reveal><span class="tl-icon" data-flora="icon:haldi"></span><div><h3 data-i18n="haldi">Haldi</h3><p class="time" data-i18n="haldiTime">11:00 AM</p></div></li>
+          <li data-reveal><span class="tl-icon" data-flora="icon:sangeet"></span><div><h3 data-i18n="mehndiSangeet">Mehndi &amp; Sangeet</h3><p class="time" data-i18n="mehndiTime">7:00 PM onwards</p></div></li>
         </ol>
         <div class="place" data-reveal>
           <span class="place-icon" data-flora="icon:home"></span>
-          <h4>At Home</h4>
-          <p>H.No 5, New Kushal Enclave<br>Near Shoki Jain Hospital<br>Bhabat, Zirakpur, Punjab</p>
-          <a class="link-btn" href="https://www.google.com/maps/search/?api=1&amp;query=H.No+5+New+Kushal+Enclave+Bhabat+Zirakpur+Punjab" target="_blank" rel="noopener">Directions</a>
+          <h4 data-i18n="atHome">At Home</h4>
+          <p data-i18n="homeAddress">H.No 5, New Kushal Enclave<br>Near Shoki Jain Hospital<br>Bhabat, Zirakpur, Punjab</p>
+          <a class="link-btn" href="https://www.google.com/maps/search/?api=1&amp;query=H.No+5+New+Kushal+Enclave+Bhabat+Zirakpur+Punjab" target="_blank" rel="noopener" data-i18n="directions">Directions</a>
         </div>
       </div>
 
       <div class="day-divider" data-flora="flourish"></div>
 
       <div class="day" data-reveal>
-        <p class="day-head">Saturday, 21<sup>st</sup> November 2026</p>
+        <p class="day-head" data-i18n="day2">Saturday, 21<sup>st</sup> November 2026</p>
         <ol class="timeline">
-          <li data-reveal><span class="tl-icon" data-flora="icon:barat"></span><div><h3>Swagat Barat</h3><p class="time">7:00 PM</p></div></li>
-          <li data-reveal><span class="tl-icon" data-flora="icon:dinner"></span><div><h3>Dinner</h3><p class="time">8:00 PM</p></div></li>
-          <li data-reveal><span class="tl-icon" data-flora="icon:doli"></span><div><h3>Doli</h3><p class="time time--text">Under the Stars</p></div></li>
-          <li data-reveal class="tl-last"><span class="tl-icon" data-flora="icon:phere"></span><div><p class="followed">Followed by</p><h3>Dance · Music · Phere</h3></div></li>
+          <li data-reveal><span class="tl-icon" data-flora="icon:barat"></span><div><h3 data-i18n="swagatBarat">Swagat Barat</h3><p class="time" data-i18n="baratTime">7:00 PM</p></div></li>
+          <li data-reveal><span class="tl-icon" data-flora="icon:dinner"></span><div><h3 data-i18n="dinner">Dinner</h3><p class="time" data-i18n="dinnerTime">8:00 PM</p></div></li>
+          <li data-reveal><span class="tl-icon" data-flora="icon:doli"></span><div><h3 data-i18n="doli">Doli</h3><p class="time time--text" data-i18n="underStars">Under the Stars</p></div></li>
+          <li data-reveal class="tl-last"><span class="tl-icon" data-flora="icon:phere"></span><div><p class="followed" data-i18n="followedBy">Followed by</p><h3 data-i18n="dancePhere">Dance · Music · Phere</h3></div></li>
         </ol>
       </div>
     </section>
 
     <!-- Venue -->
     <section class="page venue" id="venue">
-      <h2 class="script-title" data-reveal>The Wedding</h2>
+      <h2 class="script-title" data-reveal data-i18n="theWedding">The Wedding</h2>
       <div class="venue-card" data-reveal="unfold">
         <div class="venue-art-wrap" data-flora="venue"></div>
-        <p class="venue-name">The Grand Nimantran</p>
-        <p class="venue-addr">NH 7, Near Guru Nanak Service Station<br>Dhakoli, Zirakpur, Punjab – 160104</p>
-        <p class="venue-date">Saturday, 21<sup>st</sup> November 2026</p>
+        <p class="venue-name" data-i18n="venueName">The Grand Nimantran</p>
+        <p class="venue-addr" data-i18n="venueAddress">NH 7, Near Guru Nanak Service Station<br>Dhakoli, Zirakpur, Punjab – 160104</p>
+        <p class="venue-date" data-i18n="weddingDateLong">Saturday, 21<sup>st</sup> November 2026</p>
         <a class="gold-btn" href="https://www.google.com/maps/search/?api=1&amp;query=The+Grand+Nimantran+NH+7+Dhakoli+Zirakpur+Punjab+160104" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-6.2-6.5-11.2A6.5 6.5 0 0 1 18.5 9.8C18.5 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-          View Location
+          <span data-i18n="viewLocation">View Location</span>
         </a>
       </div>
     </section>
@@ -244,24 +245,24 @@
     <section class="page rsvp" id="rsvp">
       <div class="corner corner-tl" data-flora="corner" data-seed="61"></div>
       <div class="corner corner-tr" data-flora="corner" data-seed="67"></div>
-      <h2 class="script-title" data-reveal>We Would Love To Celebrate With You</h2>
-      <p class="rsvp-label" data-reveal>RSVP</p>
+      <h2 class="script-title" data-reveal data-i18n="rsvpTitle">We Would Love To Celebrate With You</h2>
+      <p class="rsvp-label" data-reveal data-i18n="rsvp">RSVP</p>
       <div class="contacts">
         <div class="contact" data-reveal>
-          <p class="contact-name">Anku Verma</p>
+          <p class="contact-name" data-i18n="anku">Anku Verma</p>
           <a class="contact-num" href="tel:+919588568534">9588568534</a>
           <a class="gold-btn gold-btn--solid" href="tel:+919588568534">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.8l1.4 4.3-2 1.6a12 12 0 0 0 5.8 5.8l1.6-2 4.3 1.4v2.8a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-            Call Anku
+            <span data-i18n="callAnku">Call Anku</span>
           </a>
         </div>
         <div class="contact" data-reveal>
-          <p class="contact-name">Barkha</p>
+          <p class="contact-name" data-i18n="barkha">Barkha</p>
           <a class="contact-num" href="tel:+918837791382">8837791382</a>
           <a class="contact-num" href="tel:+919034114316">9034114316</a>
           <a class="gold-btn gold-btn--solid" href="tel:+918837791382">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.8l1.4 4.3-2 1.6a12 12 0 0 0 5.8 5.8l1.6-2 4.3 1.4v2.8a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-            Call Barkha
+            <span data-i18n="callBarkha">Call Barkha</span>
           </a>
         </div>
       </div>
@@ -270,34 +271,34 @@
     <!-- Blessings -->
     <section class="page blessings" id="blessings">
       <div class="flourish-wrap" data-reveal data-flora="flourish"></div>
-      <h2 class="script-title" data-reveal>With Best Compliments From</h2>
+      <h2 class="script-title" data-reveal data-i18n="compliments">With Best Compliments From</h2>
       <ul class="bless-list">
-        <li data-reveal>Satpal Singh</li>
-        <li data-reveal>Tulsi Ram</li>
-        <li data-reveal>Amar Singh</li>
-        <li data-reveal>Prem Pal</li>
-        <li data-reveal>Chander Singh</li>
-        <li data-reveal>Anku Verma</li>
-        <li data-reveal class="bless-family">&amp; Whole Verma Family</li>
+        <li data-reveal data-i18n="bless1">Satpal Singh</li>
+        <li data-reveal data-i18n="bless2">Tulsi Ram</li>
+        <li data-reveal data-i18n="bless3">Amar Singh</li>
+        <li data-reveal data-i18n="bless4">Prem Pal</li>
+        <li data-reveal data-i18n="bless5">Chander Singh</li>
+        <li data-reveal data-i18n="bless6">Anku Verma</li>
+        <li data-reveal class="bless-family" data-i18n="vermaFamily">&amp; Whole Verma Family</li>
       </ul>
       <div class="little-stars" data-reveal>
         <svg class="stars-ornament" viewBox="0 0 120 30" aria-hidden="true"><g fill="currentColor"><path d="M60 3l2.4 7.6L70 13l-7.6 2.4L60 23l-2.4-7.6L50 13l7.6-2.4z"/><path d="M38 10l1.3 3.7 3.7 1.3-3.7 1.3L38 20l-1.3-3.7L33 15l3.7-1.3z" opacity=".7"/><path d="M82 10l1.3 3.7 3.7 1.3-3.7 1.3L82 20l-1.3-3.7L77 15l3.7-1.3z" opacity=".7"/><circle cx="22" cy="15" r="1.4" opacity=".5"/><circle cx="98" cy="15" r="1.4" opacity=".5"/></g></svg>
-        <h3 class="script-title script-title--sm">Little Stars</h3>
-        <p class="stars-names">Mahi, Devansh, Duggu &amp; Vani</p>
+        <h3 class="script-title script-title--sm" data-i18n="littleStars">Little Stars</h3>
+        <p class="stars-names" data-i18n="starsNames">Mahi, Devansh, Duggu &amp; Vani</p>
       </div>
     </section>
 
     <!-- Thank you -->
     <section class="page thanks" id="thanks">
       <figure class="closing-art" data-reveal="image">
-        <div class="closing-arch"><img src="assets/img/together.webp" alt="Watercolour illustration of Arun in a navy sherwani and Tara in blush pink, standing together before a floral arch with hanging lights" width="1024" height="1536" decoding="async"></div>
+        <div class="closing-arch"><img src="assets/img/together.webp" data-i18n-attr="alt:togetherAlt" alt="Watercolour illustration of Arun in a navy sherwani and Tara in blush pink, standing together before a floral arch with hanging lights" width="1024" height="1536" decoding="async"></div>
         <div class="corner corner-bl" data-flora="corner" data-seed="71"></div>
         <div class="corner corner-br" data-flora="corner" data-seed="79"></div>
       </figure>
-      <h2 class="thanks-title" data-reveal>Thank You</h2>
-      <p class="lead" data-reveal>For being a part of our story<br>and for celebrating this beautiful<br>beginning with us.</p>
-      <p class="with-love" data-reveal>With Love,</p>
-      <p class="signature" data-reveal>Arun &amp; Tara</p>
+      <h2 class="thanks-title" data-reveal data-i18n="thankYou">Thank You</h2>
+      <p class="lead" data-reveal data-i18n="thanksText">For being a part of our story<br>and for celebrating this beautiful<br>beginning with us.</p>
+      <p class="with-love" data-reveal data-i18n="withLove">With Love,</p>
+      <p class="signature" data-reveal data-i18n="signature">Arun &amp; Tara</p>
       <div class="end-seal" data-reveal>
         <span class="seal-wax" data-flora="seal"></span>
         <span class="seal-mono" aria-hidden="true">A<em>&amp;</em>T</span>
@@ -313,8 +314,15 @@
     <span class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
   </button>
 
+  <div class="lang-toggle" id="langToggle" role="group" aria-label="Language" data-i18n-attr="aria-label:languageLabel">
+    <button type="button" lang="en" data-lang-option="en" aria-pressed="true">EN</button>
+    <i aria-hidden="true"></i>
+    <button type="button" lang="hi" data-lang-option="hi" aria-pressed="false">हिंदी</button>
+  </div>
+
   <div class="grain" aria-hidden="true"></div>
 
+  <script src="js/i18n.js"></script>
   <script src="js/flora.js"></script>
   <script src="js/main.js"></script>
 </body>

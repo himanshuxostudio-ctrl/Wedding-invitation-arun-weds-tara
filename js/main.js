@@ -95,11 +95,18 @@
   var wantMusic = false;
   var fadeTimer = null;
 
+  var i18n = window.WeddingI18n;
+  function label(key, fallback) { return i18n ? i18n.t(key) : fallback; }
+
   function setMusicUI(playing) {
     musicBtn.classList.toggle('is-playing', playing);
     musicBtn.setAttribute('aria-pressed', playing ? 'true' : 'false');
-    musicBtn.setAttribute('aria-label', playing ? 'Pause music' : 'Play music');
+    musicBtn.setAttribute('aria-label', playing ? label('pauseMusic', 'Pause music') : label('playMusic', 'Play music'));
   }
+  setMusicUI(false);
+  document.addEventListener('languagechange', function () {
+    setMusicUI(musicBtn.classList.contains('is-playing'));
+  });
 
   function fadeIn() {
     clearInterval(fadeTimer);
@@ -234,6 +241,7 @@
     if (!ticking) { ticking = true; requestAnimationFrame(parallax); }
   }, { passive: true });
   window.addEventListener('resize', parallax);
+  document.addEventListener('languagechange', parallax); // text length changes the layout
   parallax();
 
   /* ------------------------------------------------------------------

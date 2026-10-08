@@ -886,6 +886,43 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
 .thanks-title { margin-top: -.18em; margin-bottom: -.12em; }
 
 /* ==========================================================================
+   LANGUAGE SWITCH — EN | हिंदी
+   Sits top-right above the envelope and the page; steps aside while the
+   guest scrolls down and returns on scroll-up or at the top.
+   ========================================================================== */
+.lang-toggle {
+  position: fixed; z-index: 70;
+  top: max(10px, env(safe-area-inset-top));
+  right: max(12px, calc(50vw - var(--col) / 2 + 12px));
+  display: flex; align-items: center; gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba(205, 174, 120, .65);
+  border-radius: 999px;
+  background: rgba(251, 247, 240, .9);
+  box-shadow: 0 4px 14px rgba(110, 76, 40, .14);
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+}
+.lang-toggle.is-away { opacity: 0; transform: translateY(-12px); pointer-events: none; }
+.lang-toggle i { width: 1px; height: 14px; background: rgba(205, 174, 120, .5); }
+.lang-toggle button {
+  min-width: 44px; min-height: 30px;
+  padding: 4px 10px;
+  border: 0; border-radius: 999px;
+  background: none; cursor: pointer;
+  color: var(--gold);
+  line-height: 1;
+  transition: background-color .3s ease, color .3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.lang-toggle button[lang="en"] { font-family: var(--serif); font-size: 12px; font-weight: 600; letter-spacing: .18em; text-indent: .18em; }
+.lang-toggle button[lang="hi"] { font-family: var(--deva); font-size: 14px; }
+.lang-toggle button[aria-pressed="true"] {
+  color: #fffaf1;
+  background: linear-gradient(135deg, #c9a46a, #b08a52 55%, #c7a067);
+}
+.lang-toggle button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* ==========================================================================
    LARGER SCREENS — present the invitation as a card on a warm table
    ========================================================================== */
 @media (min-width: 560px) {
@@ -923,4 +960,58 @@ sup { font-size: .6em; line-height: 0; vertical-align: .55em; }
   .dp-row { gap: 10px; }
   .dp-side { min-width: 82px; font-size: 15px; letter-spacing: .14em; text-indent: .14em; }
   .dp-num { font-size: 56px; }
+}
+
+/* ==========================================================================
+   HINDI — every rule is scoped to <html lang="hi">, so English is untouched.
+   Devanagari falls back to Tiro inside the existing stacks (Latin bits such
+   as numbers keep their current fonts); Roffelia has no Devanagari, so the
+   calligraphic headings use Tiro too and are sized down to sit like it.
+   ========================================================================== */
+html[lang="hi"] {
+  --serif: 'Cormorant Garamond', 'Tiro Devanagari Sanskrit', serif;
+  --script: 'Roffelia', 'Tiro Devanagari Sanskrit', serif;
+  --times: 'Times New Roman', Times, Tinos, 'Liberation Serif', 'Tiro Devanagari Sanskrit', serif;
+  font-synthesis: none; /* no fake italics / bold on Devanagari */
+}
+
+/* Wide tracking breaks the shirorekha (headline) joining Devanagari letters. */
+html[lang="hi"] :is(.eyebrow, .ec-eyebrow, .dp-day, .dp-side, .cd-label, .son-of span,
+  .rsvp-label, .link-btn, .gold-btn, .env-hint) {
+  letter-spacing: .02em; text-indent: 0;
+}
+html[lang="hi"] .eyebrow { font-size: 16px; }
+html[lang="hi"] .ec-eyebrow { font-size: .78em; }
+html[lang="hi"] :is(.dp-day, .dp-side) { font-size: 17px; }
+html[lang="hi"] .cd-label { font-size: 13px; }
+html[lang="hi"] .son-of span { font-size: 15px; }
+html[lang="hi"] .rsvp-label { font-size: 17px; }
+html[lang="hi"] :is(.link-btn, .gold-btn) { font-size: 15px; font-weight: 400; }
+html[lang="hi"] .env-hint { font-size: 16px; font-weight: 400; }
+
+/* Calligraphic headings → Tiro Devanagari at a matching visual weight. */
+html[lang="hi"] .script-title { font-size: 34px; }
+html[lang="hi"] .script-title--sm { font-size: 30px; }
+html[lang="hi"] .rsvp .script-title { font-size: clamp(26px, 7.4vw, 30px); }
+html[lang="hi"] .blessings .script-title { font-size: 34px; }
+html[lang="hi"] .thanks-title { font-size: clamp(44px, 13vw, 54px); }
+html[lang="hi"] .env-names { font-size: clamp(30px, 8.6vw, 36px); }
+html[lang="hi"] .name { font-size: clamp(46px, 13.5vw, 58px); }
+html[lang="hi"] :is(.weds, .weds-script) { font-size: 26px; }
+html[lang="hi"] .big-name { font-size: 46px; }
+html[lang="hi"] .ec-names span { font-size: 2.2em; }
+html[lang="hi"] .ec-names em { font-size: 1.1em; }
+html[lang="hi"] .with-love { font-size: 28px; }
+html[lang="hi"] .signature { font-size: clamp(34px, 10vw, 42px); }
+html[lang="hi"] :is(.place h4, .timeline .followed, .scroll-cue) { font-size: 24px; }
+
+/* Matras above and below need a little more room than Latin text. */
+html[lang="hi"] :is(.lead, .request, .steps p, .fire-line, .venue-addr, .place p, .son-of) { line-height: 1.75; }
+html[lang="hi"] :is(.timeline h3, .venue-name, .contact-name, .bless-list li) { line-height: 1.45; }
+
+/* Soft cross-fade while the words change. */
+html.lang-switching :is(.invite, .env-scene) { animation: lang-fade .5s ease; }
+@keyframes lang-fade { from { opacity: .35; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  html.lang-switching :is(.invite, .env-scene) { animation: none; }
 }
