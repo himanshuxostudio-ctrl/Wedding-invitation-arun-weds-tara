@@ -9,7 +9,9 @@ Experience flow: embossed envelope with an A&T wax seal → envelope opens with 
 ## Structure
 
 ```
-index.html            all invitation content
+index.html            all invitation content (English, with the EN | हिंदी switch)
+hi/index.html         Hindi-only invitation — GENERATED from index.html, don't edit by hand
+tools/build-hindi.js  regenerates hi/index.html
 css/style.css         styling, envelope + opening animation, reveals
 js/flora.js           SVG generator for the embossed / watercolour florals, arches, icons
 js/i18n.js            English ↔ Hindi: all translations + the EN | हिंदी switch
@@ -52,3 +54,17 @@ In the HTML, translatable elements carry `data-i18n="key"` (content) or
 `localStorage` under `tara-arun-language`; English is the default. Hindi-only type
 adjustments are at the end of `css/style.css`, all scoped to `html[lang="hi"]`.
 To edit a line, change it in `js/i18n.js` — keep the English value identical to the HTML.
+
+## Dedicated Hindi invitation (`/hi/`)
+
+`hi/index.html` is the whole invitation in Hindi at its own URL
+(e.g. `https://<your-site>/hi/`). It reuses every asset, style and script of the
+main page; `<html data-lang-lock="hi">` makes `js/i18n.js` show Hindi immediately,
+hides the language switch, and leaves the main page's saved language untouched.
+
+It is generated from `index.html`, so after editing `index.html` or `js/i18n.js` run:
+
+```
+node tools/build-hindi.js          # rewrite hi/index.html
+node tools/build-hindi.js --check  # verify it is up to date (exits 1 if not)
+```

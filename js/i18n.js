@@ -11,6 +11,10 @@
  * and mirrored to <html lang>, which switches on the Hindi typography rules
  * in style.css. Map links and phone numbers never change.
  *
+ * A page can pin one language with <html data-lang-lock="hi"> (the dedicated
+ * Hindi invitation at /hi/). A locked page ignores and never overwrites the
+ * guest's saved choice, so the two URLs don't affect each other.
+ *
  * Public API (window.WeddingI18n): getLanguage, setLanguage, toggleLanguage,
  * applyLanguage, t. A `languagechange` event fires on document after a switch.
  */
@@ -23,6 +27,9 @@
   var translations = {
     en: {
       pageTitle: 'Tara Weds Arun · 21 November 2026',
+      // share previews (meta tags; used by tools/build-hindi.js)
+      metaDescription: 'You are warmly invited to the wedding of Tara & Arun — 21 November 2026, The Grand Nimantran, Zirakpur.',
+      shareDescription: 'Open your invitation to the wedding celebrations of Tara & Arun.',
       languageLabel: 'Language',
 
       // envelope
@@ -120,7 +127,7 @@
       bless6: 'Anku Verma',
       vermaFamily: '&amp; Whole Verma Family',
       littleStars: 'Little Stars',
-      starsNames: 'Mahi, Devansh, Duggu &amp; Vani',
+      starsNames: 'Mahi, Devansh, Taani, Duggu &amp; Vani',
 
       // thank you
       togetherAlt: 'Watercolour illustration of Arun in a navy sherwani and Tara in blush pink, standing together before a floral arch with hanging lights',
@@ -136,6 +143,8 @@
 
     hi: {
       pageTitle: 'तारा संग अरुण · 21 नवंबर 2026',
+      metaDescription: 'तारा एवं अरुण के शुभ विवाह में आप सपरिवार सादर आमंत्रित हैं — 21 नवंबर 2026, द ग्रैंड निमंत्रण, ज़ीरकपुर।',
+      shareDescription: 'तारा एवं अरुण के शुभ विवाह का निमंत्रण खोलें।',
       languageLabel: 'भाषा',
 
       envNames: 'तारा <em>संग</em> अरुण',
@@ -223,7 +232,7 @@
       bless6: 'अंकु वर्मा',
       vermaFamily: 'एवं समस्त वर्मा परिवार',
       littleStars: 'बाल मनुहार',
-      starsNames: 'माही, देवांश, दुग्गू एवं वाणी',
+      starsNames: 'माही, देवांश, तानी, दुग्गू एवं वाणी',
 
       togetherAlt: 'जलरंग चित्र: फूलों के मेहराब और जगमगाती रोशनी के सामने साथ खड़े नेवी शेरवानी में अरुण और गुलाबी परिधान में तारा',
       thankYou: 'धन्यवाद',
@@ -237,11 +246,15 @@
   };
 
   var currentLanguage = 'en';
+  var lockedLanguage = global.document.documentElement.getAttribute('data-lang-lock');
+  if (SUPPORTED.indexOf(lockedLanguage) === -1) lockedLanguage = null;
 
   function readStored() {
+    if (lockedLanguage) return lockedLanguage;
     try { return global.localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
   }
   function store(lang) {
+    if (lockedLanguage) return;
     try { global.localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* private mode etc. — still switches for this visit */ }
   }
 
@@ -280,6 +293,7 @@
   }
 
   function setLanguage(lang) {
+    if (lockedLanguage) lang = lockedLanguage;
     if (SUPPORTED.indexOf(lang) === -1) lang = 'en';
     var changed = lang !== currentLanguage;
     currentLanguage = lang;
@@ -322,7 +336,7 @@
   }
 
   // English unless the guest chose Hindi before (or storage is unavailable).
-  currentLanguage = readStored() === 'hi' ? 'hi' : 'en';
+  currentLanguage = lockedLanguage || (readStored() === 'hi' ? 'hi' : 'en');
   initToggle();
   applyLanguage();
 
